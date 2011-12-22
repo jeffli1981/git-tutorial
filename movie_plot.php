@@ -44,8 +44,15 @@ class MoviePlotGenerator {
 		
 		$plot  = "He's a $his_adjective $his_occupation with a $his_quirk. ";
 		$plot .= "She's a $her_adjective $her_occupation with a $her_quirk. ";
-		$plot .= "They fight crime.";
-		return $plot;
+		$plot .= "Combined forces, they fight crime.";
+		
+		$his_traits = array($his_adjective, $his_occupation, $his_quirk);
+		$her_traits = array($her_adjective, $her_occupation, $her_quirk);
+		if(($his_traits[0] != $her_traits[0]) && ($his_traits[1] != $her_traits[1]) && ($his_traits[2] != $her_traits[2])){
+		    return $plot;
+		}else{
+		    echo "This is a bad movie plot!";	
+		}
 	}
 	
 	/**
@@ -57,7 +64,7 @@ class MoviePlotGenerator {
 	 */	
 	protected function getRandom($arr)
 	{
-		return $arr[rand(0, count($arr) - 1)];
+		return $arr[mt_rand(0, count($arr) - 1)];
 	}
 		
 }
